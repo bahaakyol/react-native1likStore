@@ -14,6 +14,7 @@ export interface IById {
   title : string;
   stock : number;
   rating : number;
+  image : string;
 }
 
 const getProduct = async ({ id }: IById): Promise<IData[]> => {

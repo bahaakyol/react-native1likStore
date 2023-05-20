@@ -1,12 +1,10 @@
-import React, { useCallback, useEffect, useState } from "react";
-import { View, Text, StyleSheet, FlatList } from "react-native";
-import { SearchBar } from "../../components";
 import { Feather } from "@expo/vector-icons";
 import { useTheme } from "@react-navigation/native";
-import searchService from "../../service/searchService";
-import { Card } from "../../components";
+import React, { useCallback, useEffect, useState } from "react";
+import { FlatList, StyleSheet, View } from "react-native";
+import { Card, EmptyView, SearchBar } from "../../components";
 import { IData } from "../../service/dataService";
-import {EmptyView} from "../../components";
+import searchService from "../../service/searchService";
 
 interface ISearchScreen {
     navigation: any;

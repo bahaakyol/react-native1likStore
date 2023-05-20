@@ -1,20 +1,20 @@
+import { AntDesign } from "@expo/vector-icons";
 import React, { useCallback, useEffect, useState } from "react";
 import {
-  View,
-  Text,
-  StyleSheet,
   Dimensions,
   Image,
+  StyleSheet,
+  Text,
   TouchableOpacity,
+  View,
 } from "react-native";
-import Price from "../Price/Price";
-import { AntDesign } from "@expo/vector-icons";
-import StarRating from "../StarRating/StarRating";
 import { useDispatch, useSelector } from "react-redux";
 import {
   addWishlist,
   deleteWishlist,
 } from "../../store/reducer/productReducer";
+import Price from "../Price/Price";
+import StarRating from "../StarRating/StarRating";
 
 interface ICard {
   price: number;
@@ -42,7 +42,6 @@ const Card = ({
   const [isFavorite, setIsFavorite] = useState<boolean>(false);
 
   const wishlist = useSelector((state: any) => state.product.wishlist);
-  console.log("Card rendered" , id)
   const dispatch = useDispatch();
 
   const addToWishlist = () => {

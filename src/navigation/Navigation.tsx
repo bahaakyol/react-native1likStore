@@ -1,13 +1,13 @@
 import {
-  NavigationContainer,
   DarkTheme,
   DefaultTheme,
+  NavigationContainer,
+  RouteProp,
 } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import { HomeScreen, ProductDetail, Wishlist ,SearchScreen } from "../scenes";
-import {useColorScheme} from 'react-native'
-import React from 'react'
-import { RouteProp } from "@react-navigation/native";
+import React from 'react';
+import { useColorScheme } from 'react-native';
+import { HomeScreen, ProductDetail, SearchScreen, Wishlist } from "../scenes";
 
 type RootParamList = {
   Home: undefined;

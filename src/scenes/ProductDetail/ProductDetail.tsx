@@ -1,12 +1,11 @@
-import React, { useEffect ,useState } from "react";
-import { View, Text, StyleSheet, ActivityIndicator, Image } from "react-native";
+import { FontAwesome5, Fontisto, MaterialIcons } from "@expo/vector-icons";
 import { useTheme } from "@react-navigation/native";
-import getProductService from "../../service/getProductService";
-import { IById } from "../../service/getProductService";
-import { Price } from "../../components";
-import { StarRating } from "../../components";
-import { FontAwesome5, MaterialIcons , Fontisto } from "@expo/vector-icons";
+import React, { useEffect, useState } from "react";
+import { ActivityIndicator, StyleSheet, Text, View } from "react-native";
 import { ImageSlider } from "react-native-image-slider-banner";
+import { StarRating } from "../../components";
+import getProductService, { IById } from "../../service/getProductService";
+
 
 
 interface IProductDetail {
@@ -31,7 +30,7 @@ const ProductDetail = ({ route }: IProductDetail) => {
 
   const buyers = Math.floor(Math.random() * 1000 + 1);
   return (
-    <View style={styles.container}>
+    <View style={[styles.container, {backgroundColor: theme.colors.background}]}>
       {loading ? (
         <ActivityIndicator
           size="large"
@@ -53,26 +52,27 @@ const ProductDetail = ({ route }: IProductDetail) => {
     ]}
     autoPlay={false}
     closeIconColor="#fff"
+    caroselImageStyle={{resizeMode: 'cover'}}
     
 />
-      <Text style={styles.title}>{data.title}</Text>
+      <Text style={[styles.title, {color : theme.colors.text}]}>{data.title}</Text>
       <View style={styles.feedback}>
-        <FontAwesome5 name="shopping-bag" size={12} color="white" />
-        <Text style={styles.smallText}>
+        <FontAwesome5 name="shopping-bag" size={12} color={theme.colors.text} />
+        <Text style={[styles.smallText, {color: theme.colors.text}]}>
           {buyers} people bought this product
         </Text>
-        <View style={styles.divider}></View>
+        <View style={[styles.divider, {backgroundColor : theme.colors.text}]}></View>
         <StarRating rating={5} numReviews={10} showReviews={false} />
       </View>
       <View style={styles.description}>
-        <Text style={styles.text}>{data.description}</Text>
+        <Text style={[styles.text, {color: theme.colors.text}]}>{data.description}</Text>
         <View style = {styles.categoryContainer}>
-        <MaterialIcons name="category" size={36} color="white" />
-        <Text style={styles.categoryText}>Category: {data.category}</Text>
+        <MaterialIcons name="category" size={36} color={theme.colors.text} />
+        <Text style={[styles.categoryText, {color:theme.colors.text}]}>Category: {data.category}</Text>
         </View>
         <View style = {styles.categoryContainer}>
-        <Fontisto name="world-o" size={36} color="white" />
-        <Text style={styles.categoryText}>Brand: {data.brand}</Text>
+        <Fontisto name="world-o" size={36} color={theme.colors.text}/>
+        <Text style={[styles.categoryText, {color : theme.colors.text}]}>Brand: {data.brand}</Text>
         </View>
       </View>
     </View>
@@ -84,7 +84,6 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "flex-start",
     alignItems: "center",
-    backgroundColor: "grey",
     overflow: "scroll",
   },
   text: {
@@ -94,6 +93,7 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 28,
     color: "white",
+    marginTop : 10,
   },
   feedback: {
     flexDirection: "row",

@@ -1,22 +1,19 @@
-import React, { useState, useEffect, useCallback , useRef } from "react";
+import { Feather } from "@expo/vector-icons";
+import { useTheme } from "@react-navigation/native";
+import React, { useCallback, useEffect, useRef, useState } from "react";
 import {
-  View,
-  SafeAreaView,
-  StyleSheet,
   ActivityIndicator,
   FlatList,
   Platform,
+  SafeAreaView,
+  StyleSheet,
   Text,
   TouchableOpacity,
+  View,
 } from "react-native";
-import { useTheme } from "@react-navigation/native";
-import { FilterModal, Header, Filter } from "../../components";
-import { FlashList } from "@shopify/flash-list";
-import { Feather } from "@expo/vector-icons";
-import dataService from "../../service/dataService";
+import { Card, FilterModal, Header } from "../../components";
 import categoryItemsService from "../../service/categoryItems";
-import { IData } from "../../service/dataService";
-import { Card } from "../../components";
+import dataService, { IData } from "../../service/dataService";
 
 const HomeScreen = ({ navigation }: any) => {
   const theme = useTheme();
@@ -89,9 +86,12 @@ const HomeScreen = ({ navigation }: any) => {
         },
       ]}
     >
-      <TouchableOpacity onPress={navigateSearch}>
+      <View style = {styles.titleContainer}>
+      <Text style = {[styles.pageHeader, {color:theme.colors.text}]}>Home</Text>
+      <TouchableOpacity style = {{position: 'absolute', right : 15,top : 5}} onPress={navigateSearch}>
         <Feather name="search" size={24} color={theme.colors.text} />
       </TouchableOpacity>
+      </View>
       {isFilterVisible && (
         <FilterModal
           modalVisible={isFilterVisible}
@@ -112,7 +112,7 @@ const HomeScreen = ({ navigation }: any) => {
           setIsWishlistVisible={navigateWishlist}
         />
       </View>
-      <View style={styles.page}>
+      <View style={[styles.page, {backgroundColor : theme.colors.background}]}>
         <FlatList
           data={data}
           renderItem={renderItem}
@@ -156,6 +156,16 @@ const styles = StyleSheet.create({
     alignItems: "center",
     backgroundColor: "red",
   },
+  titleContainer: {
+    flexDirection: "row",
+    width: "100%",
+  },
+  pageHeader : {
+    fontSize : 30,
+    fontWeight : "bold",
+    marginRight : 'auto',
+    marginLeft : 'auto',
+  }
 });
 
 export default HomeScreen;

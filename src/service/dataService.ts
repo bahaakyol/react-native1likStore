@@ -15,6 +15,7 @@ export interface IData {
   title: string;
   discountPercentage: number;
   rating : number;
+  images: string[];
 }
 
 const getData = async ({

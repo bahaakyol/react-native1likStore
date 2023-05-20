@@ -1,16 +1,13 @@
-import React, { useState, useEffect, useCallback } from "react";
+import { useTheme } from "@react-navigation/native";
+import React, { useCallback, useEffect, useState } from "react";
 import {
-  View,
-  Text,
-  StyleSheet,
   FlatList,
-  ActivityIndicator,
+  StyleSheet,
+  View
 } from "react-native";
-import { Card } from "../../components";
+import { useSelector } from "react-redux";
+import { Card, EmptyView } from "../../components";
 import dataService, { IData } from "../../service/dataService";
-import { useDispatch, useSelector } from "react-redux";
-import { useFocusEffect } from "@react-navigation/native";
-import {EmptyView} from "../../components";
 
 interface IWishlist {
   navigation: any;
@@ -20,6 +17,7 @@ const WishlistScreen = ({ navigation }: IWishlist) => {
   const [data, setData] = useState<IData[]>([]);
   const [newData, setNewData] = useState<IData[]>([]);
   const wishlist = useSelector((state: any) => state.product.wishlist);
+  const theme = useTheme();
 
   useEffect(() => {
     dataService.getData({ skip: 0 , limit : 0 }).then((res) => {
@@ -51,7 +49,7 @@ const WishlistScreen = ({ navigation }: IWishlist) => {
   }, []);
 
   return (
-    <View style={styles.container}>
+    <View style={[styles.container, {backgroundColor: theme.colors.background}]}>
       {newData.length === 0 ? (
         <View style = {styles.empty}>
         <EmptyView />
@@ -73,7 +71,6 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
-    backgroundColor: "#2c3e50",
   },
   indicator: {
     alignSelf: "center",

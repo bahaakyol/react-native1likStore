@@ -1,8 +1,8 @@
-import React, { useState } from "react";
-import { View, StyleSheet, TouchableOpacity } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
-import Filter from "../Filter/Filter";
 import { useTheme } from "@react-navigation/native";
+import React from "react";
+import { StyleSheet, TouchableOpacity, View } from "react-native";
+import Filter from "../Filter/Filter";
 
 interface IHeader {
   setIsFilterVisible: React.Dispatch<React.SetStateAction<boolean>>;
@@ -65,7 +65,6 @@ const styles = StyleSheet.create({
   filterContainer: {
     width: "50%",
     // backgroundColor : 'red',
-    marginTop: 10,
     justifyContent: "center",
     alignItems: "center",
     flexDirection: "row",
