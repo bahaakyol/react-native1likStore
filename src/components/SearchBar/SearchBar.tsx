@@ -21,7 +21,7 @@ const SearchBar = ({ icon, value, onChangeText }: SearchBarProps) => {
         placeholder="Search"
         value={value}
         onChangeText={onChangeText}
-        style={styles.textInput}
+        style={[styles.textInput, {color : theme.colors.text}]}
       />
     </View>
   );

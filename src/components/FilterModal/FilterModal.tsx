@@ -61,7 +61,7 @@ const filterModal = ({ modalVisible, setModalVisible , setCategory}: IFilterModa
               <Picker.Item
                 label={item}
                 value={item}
-                key={Math.random() * 10000}
+                key={item}
               />
             );
           })}
